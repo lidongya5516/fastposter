@@ -1,0 +1,115 @@
+/* ========== 结果头部 ========== */
+
+.result-header {
+  padding: 28rpx 32rpx 8rpx;
+}
+
+.result-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+/* ========== 图片展示 ========== */
+
+.preview-wrapper {
+  margin: 16rpx 24rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.result-image {
+  width: 100%;
+  display: block;
+  border-radius: 20rpx;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== 加载占位 ========== */
+
+.loading-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 200rpx 0;
+}
+
+.loader {
+  width: 64rpx;
+  height: 64rpx;
+  border: 6rpx solid #f0f0f0;
+  border-top-color: #07c160;
+  border-radius: 50%;
+  animation: rotate 0.8s linear infinite;
+}
+
+@keyframes rotate {
+  100% { transform: rotate(360deg); }
+}
+
+.loader-text {
+  font-size: 26rpx;
+  color: #b2b2b2;
+  margin-top: 24rpx;
+}
+
+/* ========== 分享链接 ========== */
+
+.share-card {
+  margin-top: 0;
+}
+
+.share-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.share-card-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.share-url {
+  font-size: 24rpx;
+  color: #07c160;
+  word-break: break-all;
+  line-height: 1.6;
+}
+
+/* ========== 提示 ========== */
+
+.tip-text {
+  padding: 16rpx 32rpx 0;
+  font-size: 22rpx;
+  color: #b2b2b2;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ========== 底部操作栏 ========== */
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 32rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 -4rpx 24rpx rgba(0, 0, 0, 0.06);
+  z-index: 100;
+}
+
+.btn-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}

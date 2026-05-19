@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sL https://api.github.com/repos/psoho/fast-poster/contents/)",
+      "Bash(python3 -c \"import sys,json; [print\\(f['name'], f['type']\\) for f in json.load\\(sys.stdin\\)]\")",
+      "Bash(curl -sL https://api.github.com/repos/psoho/fast-poster)",
+      "Bash(curl --version)",
+      "Bash(curl -v -sL https://api.github.com/repos/psoho/fast-poster)",
+      "Bash(git clone *)",
+      "Bash(docker --version)",
+      "Bash(pip --version)",
+      "Bash(pip3 --version)",
+      "Bash(cp -r /d/fastposter-temp/server/* /d/fastposter/)",
+      "Bash(cp /d/fastposter-temp/README.md /d/fastposter/)",
+      "Bash(pip install *)",
+      "Bash(python *)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill /F /PID 7056)",
+      "Bash(taskkill *)",
+      "Bash(curl -s http://127.0.0.1:5000/)",
+      "Bash(curl *)",
+      "Bash(awk '{print $5}')",
+      "Bash(findstr :5000)",
+      "Bash(timeout 5)",
+      "Bash(findstr LISTENING)",
+      "Bash(pip list *)",
+      "Bash(start *)",
+      "Bash(awk '{print $5, $NF}')",
+      "Bash(git init *)",
+      "Bash(gh auth *)",
+      "Bash(git add *)"
+    ]
+  }
+}

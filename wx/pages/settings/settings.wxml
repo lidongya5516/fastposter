@@ -1,0 +1,76 @@
+<view class="page">
+  <!-- 服务器配置 -->
+  <view class="card">
+    <view class="section-title">服务器配置</view>
+
+    <view class="form-group">
+      <view class="form-label">服务器地址</view>
+      <view class="input-wrapper">
+        <input
+          class="input-field"
+          placeholder="例如 http://192.168.1.100:5000"
+          value="{{serverUrl}}"
+          bindinput="onUrlInput"
+        />
+      </view>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label">Token</view>
+      <view class="input-wrapper">
+        <input
+          class="input-field"
+          type="text"
+          placeholder="请输入你的 Token"
+          value="{{token}}"
+          bindinput="onTokenInput"
+        />
+      </view>
+    </view>
+
+    <view class="btn-block">
+      <button class="btn btn-secondary" bindtap="saveSettings">保存配置</button>
+      <button class="btn btn-primary" bindtap="testConnection" disabled="{{testing}}">
+        {{testing ? '连接测试中...' : '测试连接'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- 连接状态 -->
+  <view class="card" wx:if="{{statusText}}">
+    <view class="status-section {{statusOk ? 'status-ok' : 'status-err'}}">
+      <view class="status-icon-bg">
+        <image class="status-icon" wx:if="{{statusOk}}" src="/images/check.png"></image>
+        <image class="status-icon" wx:else src="/images/close.png"></image>
+      </view>
+      <view class="status-texts">
+        <text class="status-title">{{statusOk ? '连接成功' : '连接失败'}}</text>
+        <text class="status-desc">{{statusText}}</text>
+        <text class="status-user" wx:if="{{statusOk && userInfo}}">用户：{{userInfo.username}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="card">
+    <view class="section-title">关于</view>
+    <view class="about-list">
+      <view class="about-row">
+        <text class="about-label">fastposter</text>
+        <text class="about-value">v2.19.1</text>
+      </view>
+      <view class="about-row">
+        <text class="about-label">小程序版本</text>
+        <text class="about-value">v1.0.0</text>
+      </view>
+      <view class="about-row" bindtap="openDoc">
+        <text class="about-label">官方文档</text>
+        <view class="about-right">
+          <text class="about-value link">fastposter.net</text>
+          <image class="arrow-icon" src="/images/arrow.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

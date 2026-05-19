@@ -1,0 +1,112 @@
+<view class="page">
+  <!-- 加载状态 -->
+  <block wx:if="{{loading}}">
+    <view class="card" style="padding:0;overflow:hidden;">
+      <view class="skeleton" style="height:400rpx;"></view>
+    </view>
+    <view class="card">
+      <view class="skeleton" style="width:200rpx;height:32rpx;margin-bottom:32rpx;"></view>
+      <view class="skeleton" style="width:100%;height:88rpx;margin-bottom:20rpx;"></view>
+      <view class="skeleton" style="width:100%;height:88rpx;margin-bottom:20rpx;"></view>
+      <view class="skeleton" style="width:60%;height:88rpx;"></view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <!-- 海报预览 -->
+    <view class="card" style="padding:0;overflow:hidden;" wx:if="{{poster}}">
+      <view class="editor-header">
+        <view class="editor-header-left">
+          <text class="editor-title">{{poster.name}}</text>
+          <text class="editor-sub">填写下方变量内容后生成海报</text>
+        </view>
+        <view class="editor-size" wx:if="{{posterJson}}">
+          <text class="size-text">{{posterJson.w}}×{{posterJson.h}}</text>
+        </view>
+      </view>
+      <image
+        class="editor-preview"
+        src="{{poster.previewUrl || poster.placeholderImg}}"
+        mode="widthFix"
+        binderror="onPreviewError"
+      ></image>
+    </view>
+
+    <!-- 无变量提示 -->
+    <view class="card" style="text-align:center;padding:60rpx 32rpx;" wx:if="{{poster && variables.length === 0}}">
+      <text style="font-size:80rpx;display:block;margin-bottom:16rpx;">🖼</text>
+      <text class="empty-title" style="margin-top:0;">该海报没有动态变量</text>
+      <text class="empty-desc">直接生成即可得到完整海报</text>
+    </view>
+
+    <!-- 动态变量填写 -->
+    <view class="card" wx:if="{{variables.length > 0}}">
+      <view class="section-title">填写内容</view>
+      <view class="var-item" wx:for="{{variables}}" wx:key="name">
+        <view class="var-header">
+          <view class="var-tag tag tag-green">{{item.typeLabel}}</view>
+          <text class="var-label">{{item.name}}</text>
+        </view>
+
+        <!-- 文本类型 -->
+        <input
+          class="input-field"
+          placeholder="{{item.placeholder}}"
+          value="{{item.value}}"
+          data-index="{{index}}"
+          bindinput="onVarInput"
+          wx:if="{{item.type === 'text'}}"
+        />
+
+        <!-- 二维码类型 -->
+        <input
+          class="input-field"
+          placeholder="{{item.placeholder}}"
+          value="{{item.value}}"
+          data-index="{{index}}"
+          bindinput="onVarInput"
+          wx:elif="{{item.type === 'qrcode'}}"
+        />
+
+        <!-- 图片/头像类型 -->
+        <view class="img-input" wx:elif="{{item.type === 'image' || item.type === 'avatar'}}">
+          <input
+            class="input-field img-input-field"
+            placeholder="{{item.placeholder}}"
+            value="{{item.value}}"
+            data-index="{{index}}"
+            bindinput="onVarInput"
+          />
+          <button class="upload-btn" data-index="{{index}}" bindtap="onUploadImage">上传图片</button>
+        </view>
+
+        <!-- 其他未知类型兜底 -->
+        <input
+          class="input-field"
+          placeholder="{{item.placeholder}}"
+          value="{{item.value}}"
+          data-index="{{index}}"
+          bindinput="onVarInput"
+          wx:else
+        />
+      </view>
+    </view>
+
+    <!-- 底部操作栏 -->
+    <view class="bottom-bar safe-bottom" wx:if="{{poster}}">
+      <view class="btn-block">
+        <button class="btn btn-secondary" bindtap="previewPoster" disabled="{{generating}}">
+          {{generating ? '处理中...' : '预览效果'}}
+        </button>
+        <button class="btn btn-primary" bindtap="generatePoster" disabled="{{generating}}">
+          {{generating ? '生成中...' : '生成海报'}}
+        </button>
+      </view>
+    </view>
+
+    <!-- 返回首页 -->
+    <view class="home-fab" bindtap="goHome">
+      <image class="home-fab-icon" src="/images/home.png"></image>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,127 @@
+/* ========== 连接状态 ========== */
+
+.status-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 24rpx;
+}
+
+.status-icon-bg {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.status-ok .status-icon-bg {
+  background: linear-gradient(135deg, #07c160, #06ad56);
+}
+
+.status-err .status-icon-bg {
+  background: linear-gradient(135deg, #ee0a24, #cc0000);
+}
+
+.status-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.status-texts {
+  flex: 1;
+  min-width: 0;
+}
+
+.status-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  display: block;
+}
+
+.status-ok .status-title {
+  color: #07c160;
+}
+
+.status-err .status-title {
+  color: #ee0a24;
+}
+
+.status-desc {
+  font-size: 26rpx;
+  color: #666;
+  display: block;
+  margin-top: 6rpx;
+}
+
+.status-user {
+  font-size: 24rpx;
+  color: #b2b2b2;
+  display: block;
+  margin-top: 8rpx;
+  padding-top: 12rpx;
+  border-top: 2rpx solid #f0f0f0;
+}
+
+/* ========== 关于 ========== */
+
+.about-list {
+  margin-top: -8rpx;
+}
+
+.about-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 0;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.about-row:last-child {
+  border-bottom: none;
+}
+
+.about-label {
+  font-size: 28rpx;
+  color: #1a1a2e;
+}
+
+.about-right {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.about-value {
+  font-size: 28rpx;
+  color: #b2b2b2;
+}
+
+.link {
+  color: #07c160;
+}
+
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+/* ========== 底部提示 ========== */
+
+.tip-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+  padding: 24rpx 32rpx;
+  font-size: 24rpx;
+  color: #b2b2b2;
+  line-height: 1.6;
+}
+
+.tip-icon {
+  width: 32rpx;
+  height: 32rpx;
+  flex-shrink: 0;
+  margin-top: 4rpx;
+}

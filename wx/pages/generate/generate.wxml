@@ -1,0 +1,58 @@
+<view class="page">
+  <!-- 海报名称 -->
+  <view class="result-header" wx:if="{{posterName}}">
+    <text class="result-title">{{posterName}}</text>
+  </view>
+
+  <!-- 图片展示 -->
+  <view class="preview-wrapper">
+    <image
+      class="result-image"
+      src="{{imageSrc}}"
+      mode="widthFix"
+      wx:if="{{imageSrc}}"
+      binderror="onImageError"
+    ></image>
+    <view class="loading-placeholder" wx:else>
+      <view class="loader"></view>
+      <text class="loader-text">加载中...</text>
+    </view>
+  </view>
+
+  <!-- 分享链接卡片 -->
+  <view class="share-card card" wx:if="{{shareUrl}}">
+    <view class="share-card-header">
+      <text class="share-card-title">分享链接</text>
+      <button class="btn btn-small" style="width:auto;padding:0 24rpx;" bindtap="copyLink">复制</button>
+    </view>
+    <text class="share-url" selectable>{{shareUrl}}</text>
+  </view>
+
+  <!-- 提示 -->
+  <view class="tip-text">
+    <text>海报生成后不会自动保存到服务器，请及时保存到相册</text>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar safe-bottom">
+    <button class="btn btn-primary" bindtap="saveToAlbum" wx:if="{{imageSrc}}">
+      <image class="btn-icon" src="/images/download.png"></image>
+      保存到相册
+    </button>
+    <view class="btn-block">
+      <button class="btn btn-secondary" open-type="share" wx:if="{{imageSrc}}">
+        <image class="btn-icon" src="/images/share.png"></image>
+        分享
+      </button>
+      <button class="btn btn-secondary" bindtap="createShareLink" wx:if="{{!shareUrl && imageSrc}}">
+        生成链接
+      </button>
+      <button class="btn btn-secondary" bindtap="goBack">重新编辑</button>
+    </view>
+  </view>
+
+  <!-- 返回首页 -->
+  <view class="home-fab" bindtap="goHome">
+    <image class="home-fab-icon" src="/images/home.png"></image>
+  </view>
+</view>
